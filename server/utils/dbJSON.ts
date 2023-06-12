@@ -6,7 +6,7 @@ import {createMarketInput} from "../modules/market/market.schema";
 const asyncReadFile = promisify(readFile);
 
 class DataJson {
-    data: Set<PlaceDto>;
+    private data: Set<PlaceDto>;
     constructor() {
         this.data = new Set<PlaceDto>();
         this.loadJSON();
@@ -16,7 +16,7 @@ class DataJson {
         return Array.from(this.data);
     }
 
-    async loadJSON() {
+    private async loadJSON() {
         try  {
             const file = await asyncReadFile("./utils/MOCK_DATA.json", "utf-8");
             this.data = new Set(JSON.parse(file));
@@ -32,8 +32,8 @@ class DataJson {
         this.data.add({id, ...row});
     }
 
-    async removeRow(id: number) {
-        const row = (await this.getData()).filter(({ id, ...rest}) => id == id);
+    async removeRow(rowId: number) {
+        const row = (await this.getData()).filter(({ id}) => rowId == id);
         this.data.delete(row[0]);
     }
 }
