@@ -1,7 +1,7 @@
 import { readFile } from "fs";
 import { promisify } from "util";
 import { PlaceDto } from "../interfaces/place.dto";
-import {createMarketInput} from "../modules/market/market.schema";
+import {createMarketInput, updateMarketInput} from "../modules/market/market.schema";
 
 const asyncReadFile = promisify(readFile);
 
@@ -14,6 +14,10 @@ class DataJson {
 
     async getData() {
         return Array.from(this.data);
+    }
+
+    private async sortData() {
+        this.data = new Set(Array.from(this.data).sort((a, b) => a.id - b.id));
     }
 
     private async loadJSON() {
@@ -31,13 +35,26 @@ class DataJson {
         const latestId = dataCopy.pop()?.id
 
         const id = latestId ? latestId + 1 : 0;
-        this.data.add({id, ...row});
+        this.data.add({
+            id,
+            ...row
+        });
 
     }
 
     async removeRow(rowId: number) {
-        const row = (await this.getData()).filter(({ id}) => rowId == id);
+        const row = (await this.getData())
+            .filter(({ id}) => rowId == id);
         this.data.delete(row[0]);
+    }
+
+    async updateRow(rowId: number, newRow: updateMarketInput) {
+        await this.removeRow(rowId)
+            .then(() => this.data.add({
+                id: rowId,
+                ...newRow
+            }))
+         await this.sortData();
     }
 }
 
