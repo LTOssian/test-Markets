@@ -25,5 +25,10 @@ export const createMarketDto = z.object({
     ...marketCoreDto
 })
 
+export const deleteMarketDto = z.object({
+    id: z.number()
+})
+
 export type createMarketInput = z.infer<typeof createMarketDto>;
+export type deleteMarketInput = z.infer<typeof deleteMarketDto>;
 export type marketDto = z.infer<typeof marketDto>;
