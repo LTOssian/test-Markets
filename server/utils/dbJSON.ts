@@ -1,24 +1,40 @@
 import { readFile } from "fs";
 import { promisify } from "util";
 import { PlaceDto } from "../interfaces/place.dto";
+import {createMarketInput} from "../modules/market/market.schema";
 
 const asyncReadFile = promisify(readFile);
 
 class DataJson {
-    data: PlaceDto[];
+    data: Set<PlaceDto>;
     constructor() {
-        this.data = [];
+        this.data = new Set<PlaceDto>();
         this.loadJSON();
+    }
+
+    async getData() {
+        return Array.from(this.data);
     }
 
     async loadJSON() {
         try  {
             const file = await asyncReadFile("./utils/MOCK_DATA.json", "utf-8");
-            this.data = JSON.parse(file);
+            this.data = new Set(JSON.parse(file));
         } catch(e) {
             console.error(e)
             throw new Error("Failed to load JSON file");
         }
+    }
+
+    async addRow(row: createMarketInput) {
+        const dataCopy = (await this.getData())
+        const id = dataCopy?.pop()?.id ?? 0
+        this.data.add({id, ...row});
+    }
+
+    async removeRow(id: number) {
+        const row = (await this.getData()).filter(({ id, ...rest}) => id == id);
+        this.data.delete(row[0]);
     }
 }
 
