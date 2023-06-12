@@ -5,7 +5,8 @@ import {
     createMarketInput,
     deleteMarketDto,
     getMarketByNameDto,
-    updateMarketDto
+    updateMarketDto,
+    updateMarketInput
 } from "./market.schema";
 import {MarketCreateReq, MarketDeleteReq, MarketNameReq, MarketUpdateReq} from "../../interfaces/request.types";
 import {ZodError} from "zod";
@@ -21,7 +22,7 @@ export const marketController = {
 
             res.json({
                 data: markets
-            })
+            });
         } catch(e) {
             next(e);
         }
@@ -37,10 +38,10 @@ export const marketController = {
 
         if (!result.success) {
             const error: ZodError = new ZodError(result.error.issues);
-            error.name = "ValidationError"
+            error.name = "ValidationError";
             next(error);
         } else {
-            req.marketName = result.data.nameInput
+            req.marketName = result.data.nameInput;
             next();
         }
     },
@@ -85,7 +86,7 @@ export const marketController = {
     )=> {
         try {
             const createInput = req.createInput as createMarketInput;
-            const market = await marketService.getMarketByName(createInput.etablissement)
+            const market = await marketService.getMarketByName(createInput.etablissement);
 
             if (!market.length) {
                 await marketService.createMarket(createInput);
@@ -95,10 +96,9 @@ export const marketController = {
                     data: createInput
                 });
             } else {
-                res.status(409).json({
-                    status: "Conflict",
-                    message: "This Market (establishment) already exists"
-                })
+                const error = new Error("This Market (establishment) already exists");
+                error.name = "ConflictError"
+                next(error)
             }
         } catch(e) {
             next(e);
@@ -114,10 +114,10 @@ export const marketController = {
 
         if (!result.success) {
             const error: ZodError = new ZodError(result.error.issues);
-            error.name = "ValidationError"
+            error.name = "ValidationError";
             next(error);
         } else {
-            req.id = result.data.id
+            req.id = result.data.id;
             next();
         }
 
@@ -128,20 +128,19 @@ export const marketController = {
         next: NextFunction
     ) => {
         try {
-            const deleteInput = req.id as number
-            const market = await marketService.getMarketById(deleteInput)
+            const deleteInput = req.id as number;
+            const market = await marketService.getMarketById(deleteInput);
 
             if (market.length) {
-                await marketService.deleteMarket(deleteInput)
-                res.status(204).json({})
+                await marketService.deleteMarket(deleteInput);
+                res.status(204).json({});
             } else {
-                res.status(409).json({
-                    status: "Conflict",
-                    message: "This Market (id) does not exists"
-                })
+                const error = new Error("This Market (id) does not exists");
+                error.name = "ConflictError"
+                next(error)
             }
         } catch (e) {
-            next(e)
+            next(e);
         }
     },
 
@@ -162,5 +161,31 @@ export const marketController = {
             next();
         }
     },
+    updateMarket: async (
+        req: MarketUpdateReq,
+        res: Response,
+        next: NextFunction
+    ) => {
+        try {
+            const updateInput = req.updateInput as updateMarketInput
+            const updateId = req.id as number;
+            const market = await marketService.getMarketById(updateId);
 
+            if (market.length) {
+                await marketService.updateMarket(updateId, updateInput);
+
+                res.json({
+                    status: "Success",
+                    message: "Market successfully updated"
+                })
+            } else {
+                res.status(409).json({
+                    status: "Conflict",
+                    message: "This Market (id) does not exists"
+                });
+            }
+        } catch (e) {
+            next(e);
+        }
+    }
 }

@@ -1,5 +1,5 @@
 import {dataClient} from "../../utils/dbJSON";
-import { createMarketInput, marketDto} from "./market.schema";
+import {createMarketInput, marketDto, updateMarketInput} from "./market.schema";
 
 export const marketService = {
     getAllMarkets: async (): Promise<marketDto[]> => {
@@ -20,5 +20,9 @@ export const marketService = {
 
     deleteMarket: async (id: number) => {
         return (await dataClient.removeRow(id));
+    },
+
+    updateMarket: async (id: number, updateInput: updateMarketInput) => {
+        return (await dataClient.updateRow(id, updateInput))
     }
 }
