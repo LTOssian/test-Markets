@@ -14,7 +14,7 @@ export const marketController = {
             const markets = await marketService.getAllMarkets();
 
             res.json({
-                data: markets.map(({id, ...rest}) => rest)
+                data: markets
             })
         } catch(e) {
             next(e);
@@ -46,7 +46,7 @@ export const marketController = {
             if (req.marketName) {
                 const markets = await marketService.getMarketByName(req.marketName);
                 markets.length ?
-                    res.json({ data: markets.map(({id, ...rest}) => rest) })
+                    res.json({ data: markets})
                     : next();
             }
         } catch(e) {

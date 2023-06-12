@@ -28,8 +28,11 @@ class DataJson {
 
     async addRow(row: createMarketInput) {
         const dataCopy = (await this.getData())
-        const id = dataCopy?.pop()?.id ?? 0
+        const latestId = dataCopy.pop()?.id
+
+        const id = latestId ? latestId + 1 : 0;
         this.data.add({id, ...row});
+
     }
 
     async removeRow(rowId: number) {
