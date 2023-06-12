@@ -1,17 +1,12 @@
 import z from 'zod';
 
-const marketCoreDto = ({
+const marketCoreDto = {
     etablissement_type: z.string({}).min(1),
     etablissement: z.string({}).min(1),
     location: z.string({}).min(1),
     address: z.string({}).min(1),
-    mail: z.string({}).email()
-}) 
-
-export const createMarketDto = z.object({
-    ...marketCoreDto,
-    id: z.number()
-})
+    mail: z.string({}).email().min(1)
+}
 
 export const marketDto = z.object({
     ...marketCoreDto,
@@ -23,6 +18,10 @@ export const getMarketByNameDto= z.object({
         required_error: "The name of the establishment is required",
         invalid_type_error: "The name should be a string"
     }).min(1)
+})
+
+export const createMarketDto = z.object({
+    ...marketCoreDto
 })
 
 export type createMarketInput = z.infer<typeof createMarketDto>;
