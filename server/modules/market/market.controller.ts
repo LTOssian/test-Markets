@@ -10,8 +10,11 @@ export const marketController = {
         next: NextFunction
     ) => {
         try {
+
+            const markets = await marketService.getAllMarkets();
+
             res.json({
-                data: await marketService.getAllMarkets()
+                data: markets.map(({id, ...rest}) => rest)
             })
         } catch(e) {
             next(e);
@@ -43,7 +46,9 @@ export const marketController = {
         try {
             if (req.marketName) {
                 const markets = await marketService.getMarketByName(req.marketName);
-                markets.length ? res.json({ data: markets }) : next();
+                markets.length ?
+                    res.json({ data: markets.map(({id, ...rest}) => rest) })
+                    : next();
             }
         } catch(e) {
             next(e);

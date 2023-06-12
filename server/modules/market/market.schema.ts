@@ -14,7 +14,8 @@ export const createMarketDto = z.object({
 })
 
 export const marketDto = z.object({
-    ...marketCoreDto
+    ...marketCoreDto,
+    id: z.number()
 })
 
 export const getMarketByNameDto= z.object({
