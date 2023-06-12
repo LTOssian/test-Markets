@@ -5,9 +5,10 @@ export const marketService = {
     getAllMarkets: async (): Promise<marketDto[]> => {
         return await dataClient.getData();
     },
-    // getMarketById: async (idInput: number): Promise<marketDto[]> => {
-    //     return dataClient.data.filter(market => market.id === idInput)
-    // },
+    getMarketById: async (idInput: number): Promise<marketDto[]> => {
+        return (await dataClient.getData())
+            .filter(market => market.id === idInput)
+    },
     getMarketByName: async (nameInput: string): Promise<marketDto[]> => {
         return (await dataClient.getData())
             .filter(market => market.etablissement.toLowerCase() === nameInput.toLowerCase());
