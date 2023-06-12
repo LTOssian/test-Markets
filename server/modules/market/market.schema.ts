@@ -17,5 +17,12 @@ export const marketDto = z.object({
     ...marketCoreDto
 })
 
+export const getMarketByNameDto= z.object({
+    nameInput: z.string({
+        required_error: "The name of the establishment is required",
+        invalid_type_error: "The name should be a string"
+    }).min(1)
+})
+
 export type createMarketInput = z.infer<typeof createMarketDto>;
 export type marketDto = z.infer<typeof marketDto>;
