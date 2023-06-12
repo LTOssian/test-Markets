@@ -9,11 +9,15 @@ export const marketService = {
     //     return dataClient.data.filter(market => market.id === idInput)
     // },
     getMarketByName: async (nameInput: string): Promise<marketDto[]> => {
-        return (await dataClient.getData()).filter(market => market.etablissement.toLowerCase() === nameInput.toLowerCase());
+        return (await dataClient.getData())
+            .filter(market => market.etablissement.toLowerCase() === nameInput.toLowerCase());
     },
 
     createMarket: async (createInput: createMarketInput)=> {
         return (await dataClient.addRow(createInput));
-    }
+    },
 
+    deleteMarket: async (id: number) => {
+        return (await dataClient.removeRow(id));
+    }
 }
