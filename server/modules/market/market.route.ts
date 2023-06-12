@@ -8,4 +8,5 @@ marketRouter.param("id", marketController.validateIdParam);
 marketRouter.get('/all', marketController.getAllMarkets);
 marketRouter.get('/:name', marketController.getMarketByName);
 marketRouter.post('/', marketController.validateCreateMarketBody, marketController.createMarket);
-marketRouter.delete('/:id', marketController.deleteMarket)
+marketRouter.delete('/:id', marketController.deleteMarket);
+marketRouter.put("/:id", marketController.validateUpdateMarketBody, marketController.updateMarket);
