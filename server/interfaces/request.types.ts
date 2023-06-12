@@ -19,6 +19,7 @@ export interface MarketDeleteReq extends Request {
 }
 
 export interface MarketUpdateReq extends Request {
+    id ?: number
     updateInput ?: {
         etablissement_type: string;
         etablissement: string;
