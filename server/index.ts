@@ -16,14 +16,15 @@ server.use((req: Request, res: Response, next: NextFunction) => {
 })
 
 // Endpoints handlers
-server.use("/api/market", marketRouter)
+server.use("/api/market", marketRouter);
 
 // Error handlers
-server.use(ErrorModule.notFoundError)
-server.use(ErrorModule.validationError)
-server.use(ErrorModule.genericError)
+server.use(ErrorModule.notFoundError);
+server.use(ErrorModule.conflictError);
+server.use(ErrorModule.validationError);
+server.use(ErrorModule.genericError);
 
 const PORT = 4001;
 server.listen(PORT, () => {
-    console.log(`Server running here: http://localhost:${PORT}`)
+    console.log(`Server running here: http://localhost:${PORT}`);
 });

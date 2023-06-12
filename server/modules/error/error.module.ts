@@ -33,5 +33,20 @@ export const ErrorModule = {
         } else {
             next(error);
         }
+    },
+    conflictError: (
+        error: Error,
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
+        if (error.name === "ConflictError") {
+            res.status(409).json({
+                status: 'Conflict',
+                message: error.message
+            })
+        } else {
+            next(error)
+        }
     }
 }
