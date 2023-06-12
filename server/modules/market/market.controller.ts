@@ -1,7 +1,13 @@
 import {NextFunction, Request, Response} from "express"
 import { marketService } from "./market.service"
-import {createMarketDto, createMarketInput, deleteMarketDto, getMarketByNameDto} from "./market.schema";
-import {MarketCreateReq, MarketDeleteReq, MarketNameReq} from "../../interfaces/request.types";
+import {
+    createMarketDto,
+    createMarketInput,
+    deleteMarketDto,
+    getMarketByNameDto,
+    updateMarketDto
+} from "./market.schema";
+import {MarketCreateReq, MarketDeleteReq, MarketNameReq, MarketUpdateReq} from "../../interfaces/request.types";
 import {ZodError} from "zod";
 
 export const marketController = {
@@ -65,11 +71,11 @@ export const marketController = {
 
         if (!result.success) {
             const error: ZodError = new ZodError(result.error.issues);
-            error.name = "ValidationError"
+            error.name = "ValidationError";
             next(error);
         } else {
             req.createInput = createInput;
-            next()
+            next();
         }
     },
     createMarket: async (
@@ -137,5 +143,24 @@ export const marketController = {
         } catch (e) {
             next(e)
         }
-    }
+    },
+
+    validateUpdateMarketBody: (
+        req: MarketUpdateReq,
+        res: Response,
+        next: NextFunction
+    ) => {
+        const updateInput = req.body;
+        const result = updateMarketDto.safeParse(updateInput);
+
+        if (!result.success) {
+            const error: ZodError= new ZodError(result.error.issues);
+            error.name = "ValidationError";
+            next(error);
+        } else {
+            req.updateInput = updateInput;
+            next();
+        }
+    },
+
 }
