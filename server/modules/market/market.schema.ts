@@ -1,7 +1,8 @@
 import z from 'zod';
+import {PlaceType} from "../../interfaces/place_type.enum";
 
 const marketCoreDto = {
-    etablissement_type: z.string({}).min(1),
+    etablissement_type: z.nativeEnum(PlaceType),
     etablissement: z.string({}).min(1),
     location: z.string({}).min(1),
     address: z.string({}).min(1),
