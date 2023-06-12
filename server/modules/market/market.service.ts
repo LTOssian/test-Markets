@@ -1,5 +1,5 @@
 import {dataClient} from "../../utils/dbJSON";
-import {createMarketDto, createMarketInput, marketDto} from "./market.schema";
+import { createMarketInput, marketDto} from "./market.schema";
 
 export const marketService = {
     getAllMarkets: async (): Promise<marketDto[]> => {
