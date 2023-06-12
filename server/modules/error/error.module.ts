@@ -1,4 +1,4 @@
-import { Request, Response} from "express";
+import {NextFunction, Request, Response} from "express";
 
 export const ErrorModule = {
     genericError: (
@@ -19,18 +19,19 @@ export const ErrorModule = {
             error: 'Data Not Found'
         });
     },
-    // validationError:(
-    //     error: Error,
-    //     req: Request,
-    //     res: Response,
-    //     next: NextFunction
-    // ) => {
-    //     if (error.name === 'ValidationError') {
-    //         res.status(400).json({
-    //             error: error.message
-    //         })
-    //     } else {
-    //         next(error);
-    //     }
-    // }
+    validationError:(
+        error: Error,
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
+        if (error.name === 'ValidationError') {
+            res.status(409).json({
+                status: 'Bad request',
+                message: JSON.parse(error.message)
+            })
+        } else {
+            next(error);
+        }
+    }
 }

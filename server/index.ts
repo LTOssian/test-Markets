@@ -20,7 +20,7 @@ server.use("/api/market", marketRouter)
 
 // Error handlers
 server.use(ErrorModule.notFoundError)
-// server.use(ErrorModule.validationError)
+server.use(ErrorModule.validationError)
 server.use(ErrorModule.genericError)
 
 const PORT = 4001;
