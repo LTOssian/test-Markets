@@ -127,10 +127,7 @@ export const marketController = {
 
             if (market.length) {
                 await marketService.deleteMarket(deleteInput)
-                res.status(204).json({
-                    status: "Success",
-                    message: "Market successfully deleted"
-                })
+                res.status(204).json({})
             } else {
                 res.status(409).json({
                     status: "Conflict",
