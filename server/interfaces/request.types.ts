@@ -15,6 +15,6 @@ export interface MarketCreateReq extends Request {
     }
 }
 
-export interface MarketCreateBody<T> extends Request {
-    createInput: T;
+export interface MarketDeleteReq extends Request {
+    id ?: number;
 }
