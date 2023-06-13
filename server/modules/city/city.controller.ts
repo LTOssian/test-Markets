@@ -5,7 +5,7 @@ import {getMarketByCityDto} from "./city.schema";
 import {ZodError} from "zod";
 
 export const cityController = {
-    validateCityParem: (
+    validateCityParam: (
         req: CityReq,
         res: Response,
         next: NextFunction
