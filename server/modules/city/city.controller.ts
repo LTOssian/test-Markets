@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express"
+import { NextFunction, Response } from "express"
 import { cityService } from "./city.service";
 import { CityReq } from "../../interfaces/request.types";
 import {getMarketByCityDto} from "./city.schema";
@@ -11,7 +11,7 @@ export const cityController = {
         next: NextFunction
     ) => {
         const city = req.params.city;
-        const result = getMarketByCityDto.safeParse(city);
+        const result = getMarketByCityDto.safeParse({ city: city });
 
         if (!result.success) {
             const error: ZodError = new ZodError(result.error.issues);
