@@ -36,3 +36,8 @@ export interface CityReq extends Request {
 export interface FieldReq extends Request {
     field ?: string;
 }
+
+export interface MergeMarketCityByField extends Request {
+    city ?: string;
+    f ?: string;
+}
