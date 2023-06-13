@@ -28,3 +28,7 @@ export interface MarketUpdateReq extends Request {
         mail: string;
     }
 }
+
+export interface CityReq extends Request {
+    city ?: string;
+}
