@@ -17,3 +17,8 @@ Day 1 :
   - To use custom error middlewares to handle unsuccessful request
   - 
 
+Day 2 :
+- 
+- Tasks done
+  - Read Chakra UI Documentation
+  - Finished Exercise #2 endpoints in the city & field modules
