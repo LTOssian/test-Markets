@@ -1,5 +1,4 @@
 import {NextFunction, Request, Response} from "express";
-import {SafeParseReturnType, ZodError} from "zod";
 
 export const ErrorModule = {
     genericError: (
