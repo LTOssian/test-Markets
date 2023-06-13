@@ -32,3 +32,7 @@ export interface MarketUpdateReq extends Request {
 export interface CityReq extends Request {
     city ?: string;
 }
+
+export interface FieldReq extends Request {
+    field ?: string;
+}
