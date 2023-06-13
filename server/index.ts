@@ -2,6 +2,7 @@ import express, {Express, NextFunction, Request, Response} from 'express';
 import morgan from "morgan";
 import { marketRouter } from './modules/market/market.route';
 import {ErrorModule} from "./modules/error/error.module";
+import {cityRouter} from "./modules/city/city.route";
 
 const server: Express = express();
 
@@ -17,6 +18,7 @@ server.use((req: Request, res: Response, next: NextFunction) => {
 
 // Endpoints handlers
 server.use("/api/market", marketRouter);
+server.use("/api/city", cityRouter);
 
 // Error handlers
 server.use(ErrorModule.notFoundError);
