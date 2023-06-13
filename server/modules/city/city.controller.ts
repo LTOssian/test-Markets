@@ -3,6 +3,7 @@ import { cityService } from "./city.service";
 import { CityReq } from "../../interfaces/request.types";
 import {getMarketByCityDto} from "./city.schema";
 import {ZodError} from "zod";
+import { toCapitalizeHelpers} from "../../helpers/capitalize.helpers";
 
 export const cityController = {
     validateCityParam: (
@@ -10,7 +11,7 @@ export const cityController = {
         res: Response,
         next: NextFunction
     ) => {
-        const city = req.params.city;
+        const city = toCapitalizeHelpers(req.params.city);
         const result = getMarketByCityDto.safeParse({ city: city });
 
         if (!result.success) {

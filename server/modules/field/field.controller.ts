@@ -3,6 +3,7 @@ import { fieldService } from "./field.service";
 import { ZodError } from "zod";
 import { getMarketByFieldDto } from "./field.schema";
 import { FieldReq } from "../../interfaces/request.types";
+import { toCapitalizeHelpers } from "../../helpers/capitalize.helpers";
 
 export const fieldController = {
     validateFieldParam: async (
@@ -10,7 +11,7 @@ export const fieldController = {
         res: Response,
         next: NextFunction
     ) => {
-        const field = req.params.field;
+        const field = toCapitalizeHelpers(req.params.field)
         const result = getMarketByFieldDto.safeParse({field: field});
 
         if (!result.success) {
