@@ -23,7 +23,7 @@ export const cityController = {
             next();
         }
     },
-    getMarketByName: async (
+    getMarketByCity: async (
         req: CityReq,
         res: Response,
         next: NextFunction
