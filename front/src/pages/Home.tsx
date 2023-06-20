@@ -5,7 +5,6 @@ import {useQuery} from "react-query";
 import {marketService} from "../fetchers/market/market.service";
 import SimpleTable from "../components/SimpleTable/SimpleTable";
 import {useSelectFilter} from "../contexts/FilterContext";
-import {PaginationProvider} from "../contexts/PaginationContext";
 import {fieldService} from "../fetchers/field/field.service";
 function Home() {
     const { selectedValue } = useSelectFilter();
@@ -26,12 +25,9 @@ function Home() {
             <SimpleFilter
                 refetch={refetch}
             />
-            {/*{selectedValue}*/}
-            <PaginationProvider>
-                <SimpleTable
-                    data={data}
-                />
-            </PaginationProvider>
+            <SimpleTable
+                data={data}
+            />
         </div>
     )
 }

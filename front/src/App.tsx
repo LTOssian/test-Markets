@@ -7,6 +7,7 @@ import {
 } from 'react-query'
 import Home from "./pages/Home";
 import { SelectFilterProvider} from "./contexts/FilterContext";
+import {PaginationProvider} from "./contexts/PaginationContext";
 
 export const queryClient = new QueryClient()
 
@@ -16,7 +17,9 @@ function App() {
           <ChakraProvider>
               <div className="App">
                   <SelectFilterProvider>
-                      <Home />
+                      <PaginationProvider>
+                          <Home />
+                      </PaginationProvider>
                   </SelectFilterProvider>
               </div>
           </ChakraProvider>
