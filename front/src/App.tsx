@@ -5,6 +5,7 @@ import {
     QueryClient,
     QueryClientProvider,
 } from 'react-query'
+import Home from "./pages/Home";
 const queryClient = new QueryClient()
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
           <ChakraProvider>
               <div className="App">
-
+                    <Home />
               </div>
           </ChakraProvider>
       </QueryClientProvider>

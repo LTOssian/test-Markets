@@ -41,3 +41,7 @@ export interface MergeMarketCityByField extends Request {
     city ?: string;
     f ?: string;
 }
+
+export interface MarketPageReq extends Request {
+    pagination ?: string;
+}

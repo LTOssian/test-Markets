@@ -12,7 +12,5 @@
 }
 
 .App {
-  background-color: var(--clr-white);
-  color: var(--clr-white);
-  /*height: 100vh;*/
+  height: 100vh;
 }
