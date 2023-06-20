@@ -53,8 +53,8 @@ Day 6:
   - Finished all Front-End exercises
 - Decisions made
   - To use `axios` to interact with the API for more robust calls
-  - To add a filter for market fields
-  - To add a pagination component otherwise the 1000 rows would slow the page down
+  - To add a filter for the fields (with Context)
+  - To add a pagination component & Context otherwise the 1000 rows would slow the page down
 
 ## Continued Development
 
