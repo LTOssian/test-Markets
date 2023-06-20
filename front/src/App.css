@@ -1,0 +1,18 @@
+:root {
+  --clr-white: #FFFDFA;
+  --clr-purple: #585AFC;
+  --clr-black: #00001A;
+  --p-global: 16px 90px;
+}
+
+@media only screen and (max-width: 782px) {
+  :root {
+    --p-global: 16px;
+  }
+}
+
+.App {
+  background-color: var(--clr-white);
+  color: var(--clr-white);
+  /*height: 100vh;*/
+}
