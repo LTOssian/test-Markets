@@ -4,6 +4,10 @@
 
 The goal of this project is to build a fullstack CRUD application using React with the component lib Chakra UI & Express for a Rest  API.
 
+#### Screenshot
+
+![Home Screenshot](./Capture.png)
+
 ## Installation :
 
 - clone the repo
@@ -55,3 +59,8 @@ Day 6:
 ## Continued Development
 
 Had a hard time wrapping my head around ChakraUI at first, which is why I slowed down after Day 3. My approach on reading documentation wasn't so great, I must take into account the ecosystem around the specific thing that I want to use instead of making narrow sighted research.
+
+## Resources 
+
+- [Frank Grall's article about Atomic Design (FR)](https://medium.com/@frkgrall/architecturer-un-projet-react-avec-latomic-design-bce9a3e422d0)
+- [ChakraUI's documentation](https://chakra-ui.com/getting-started)
