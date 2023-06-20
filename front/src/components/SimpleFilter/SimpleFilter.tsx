@@ -1,14 +1,13 @@
 import React, {ChangeEvent, Dispatch, SetStateAction, useState} from 'react';
 import './SimpleFilter.css';
 import {PlaceType} from "../../utils/place_type.enum";
-import { Select } from '@chakra-ui/react'
+import {CloseButton, filter, Select} from '@chakra-ui/react'
 
 interface SimpleFilterProps {
     onChange: Dispatch<SetStateAction<string>>;
     filterValue: string;
 }
 function SimpleFilter({onChange, filterValue}: SimpleFilterProps) {
-
     return (
         <div className={"simpleFilter"}>
             <Select
@@ -27,6 +26,13 @@ function SimpleFilter({onChange, filterValue}: SimpleFilterProps) {
                     })
                 }
             </Select>
+            {
+                filterValue ? (
+                    <CloseButton size='lg' onClick={() => {
+                        onChange("");
+                    }}/>
+                ) : null
+            }
         </div>
     )
 }
