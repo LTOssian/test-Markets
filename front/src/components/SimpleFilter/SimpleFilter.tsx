@@ -1,8 +1,7 @@
-import React, {ChangeEvent, Dispatch, SetStateAction, useState} from 'react';
+import React from 'react';
 import './SimpleFilter.css';
 import {PlaceType} from "../../utils/place_type.enum";
-import {CloseButton, filter, Select} from '@chakra-ui/react'
-import {queryClient} from "../../App";
+import {CloseButton, Select} from '@chakra-ui/react'
 import {useSelectFilter} from "../../contexts/FilterContext";
 import {QueryObserverResult, RefetchOptions, RefetchQueryFilters} from "react-query";
 import {MarketDto} from "../../fetchers/market.dto";

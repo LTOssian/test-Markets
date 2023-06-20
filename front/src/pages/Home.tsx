@@ -9,7 +9,7 @@ import {fieldService} from "../fetchers/field/field.service";
 function Home() {
     const { selectedValue } = useSelectFilter();
 
-    const {data, refetch, isLoading, isError} = useQuery("markets",
+    const {data, refetch, isLoading} = useQuery("markets",
         () => {
             if (selectedValue) {
                 return fieldService.useField(selectedValue);
