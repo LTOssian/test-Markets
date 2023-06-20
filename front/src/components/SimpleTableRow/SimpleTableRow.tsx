@@ -22,7 +22,7 @@ function SimpleTableRow ({id, name, type, city, address, mail}: MarketProps) {
             <Td>{type}</Td>
             <Td>{city}</Td>
             <Td>{address}</Td>
-             <Td>{mail}</Td>
+            <Td><a href={"mailto:" + mail}>{mail}</a></Td>
             <Td>
                 <ButtonGroup gap={1}>
                     <UpdateButton
