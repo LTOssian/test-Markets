@@ -3,6 +3,10 @@
 }
 
 .resultText {
-    margin: 16px;
+    margin: 16px 0;
     font-size: 1.5rem;
+}
+
+.resultText span {
+    font-size: .75rem;
 }

@@ -3,28 +3,32 @@ import {
     Table,
     Thead,
     Tbody,
-    Tfoot,
     Tr,
     Th,
     TableCaption,
     TableContainer
 } from '@chakra-ui/react'
-import {useQuery} from "react-query";
-import {marketService} from "../../fetchers/market/market.service";
 import {MarketDto} from "../../fetchers/market.dto";
 import SimpleTableRow from "../SimpleTableRow/SimpleTableRow";
 import {usePagination} from "../../contexts/PaginationContext";
+import SimplePagination from "../SimplePagination/SimplePagination";
+import React from "react";
 interface SimpleTableProps {
     data: MarketDto | undefined
 }
 function SimpleTable({ data }: SimpleTableProps) {
-    const { currentPage, setCurrentPage } = usePagination();
+    const { currentPage, } = usePagination();
 
+    const rowQuantity = data?.data.length;
+    const pageQuantity = rowQuantity ? Math.round(rowQuantity / 15) : 1
     return (
         <div >
             <p className={"resultText"}>
-                {data?.data.length} results
+                {rowQuantity} results <span>({pageQuantity == 1 ? pageQuantity + " page" : pageQuantity + " pages"})</span>
             </p>
+            <SimplePagination
+                maxPage={pageQuantity}
+            />
             <TableContainer className={"tableLayout"}>
                 <Table variant={"simple"} size={"sm"}>
                     <TableCaption className={"tableDarkText"}> </TableCaption>
@@ -40,7 +44,7 @@ function SimpleTable({ data }: SimpleTableProps) {
                     </Thead>
                     <Tbody className={"tableDarkText"}>
                         {
-                            data?.data.slice(currentPage-1,currentPage*20).map(market => (
+                            data?.data.slice((currentPage-1)*20,currentPage*20).map(market => (
                                     <SimpleTableRow
                                         key={market.id}
                                         id={market.id}
