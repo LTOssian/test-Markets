@@ -14,6 +14,9 @@ server.use(express.urlencoded({
 server.use(express.json());
 server.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader("Content-Type", "application/json");
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     next();
 })
 
