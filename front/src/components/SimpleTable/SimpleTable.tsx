@@ -19,16 +19,19 @@ interface SimpleTableProps {
 function SimpleTable({ data }: SimpleTableProps) {
     const { currentPage, } = usePagination();
 
-    const rowQuantity = data?.data.length;
-    const pageQuantity = rowQuantity ? Math.round(rowQuantity / 15) : 1
+    const rowQuantity = data?.data.length ?? 0;
+    const pageQuantity = rowQuantity ? Math.ceil(rowQuantity / 15) : 1
     return (
-        <div >
-            <p className={"resultText"}>
-                {rowQuantity} results <span>({pageQuantity == 1 ? pageQuantity + " page" : pageQuantity + " pages"})</span>
-            </p>
-            <SimplePagination
-                maxPage={pageQuantity}
-            />
+        <div className={"simpleTable"}>
+            <div className={"headerLayout"}>
+                <p className={"resultText"}>
+                    {rowQuantity == 1 ? rowQuantity + " result" : rowQuantity + " results"} <span>({pageQuantity == 1 ? pageQuantity + " page" : pageQuantity + " pages"})</span>
+                </p>
+                <SimplePagination
+                    maxPage={pageQuantity}
+                />
+            </div>
+
             <TableContainer className={"tableLayout"}>
                 <Table variant={"simple"} size={"sm"}>
                     <TableCaption className={"tableDarkText"}> </TableCaption>
