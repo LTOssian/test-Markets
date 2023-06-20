@@ -6,14 +6,18 @@ import {
     QueryClientProvider,
 } from 'react-query'
 import Home from "./pages/Home";
-const queryClient = new QueryClient()
+import { SelectFilterProvider} from "./contexts/FilterContext";
+
+export const queryClient = new QueryClient()
 
 function App() {
   return (
       <QueryClientProvider client={queryClient}>
           <ChakraProvider>
               <div className="App">
-                    <Home />
+                  <SelectFilterProvider>
+                      <Home />
+                  </SelectFilterProvider>
               </div>
           </ChakraProvider>
       </QueryClientProvider>

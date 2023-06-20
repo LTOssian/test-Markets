@@ -4,3 +4,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.trashIcon {
+    width: 24px;
+}
