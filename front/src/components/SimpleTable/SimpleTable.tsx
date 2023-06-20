@@ -20,7 +20,7 @@ function SimpleTable({ data }: SimpleTableProps) {
     const { currentPage, } = usePagination();
 
     const rowQuantity = data?.data.length ?? 0;
-    const pageQuantity = rowQuantity ? Math.ceil(rowQuantity / 15) : 1
+    const pageQuantity = rowQuantity ? Math.ceil(rowQuantity / 20) : 1
     return (
         <div className={"simpleTable"}>
             <div className={"headerLayout"}>
