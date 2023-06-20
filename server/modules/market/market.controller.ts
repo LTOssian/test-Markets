@@ -1,4 +1,4 @@
-import {NextFunction, Response} from "express"
+import {Request, NextFunction, Response} from "express"
 import { marketService } from "./market.service"
 import {
     createMarketDto,
