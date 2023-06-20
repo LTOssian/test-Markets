@@ -1,4 +1,4 @@
-import {NextFunction, Request, Response} from "express"
+import {NextFunction, Response} from "express"
 import { marketService } from "./market.service"
 import {
     createMarketDto,
@@ -20,9 +20,7 @@ export const marketController = {
         try {
             const markets = await marketService.getAllMarkets();
 
-            res.json({
-                data: markets
-            });
+            res.json(markets);
         } catch(e) {
             next(e);
         }

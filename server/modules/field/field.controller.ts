@@ -31,9 +31,7 @@ export const fieldController = {
         try {
             if (req.field) {
                 const fieldMarkets = await fieldService.getMarketByField(req.field);
-                res.json({
-                    data: fieldMarkets
-                })
+                res.json(fieldMarkets)
             }
         } catch (e) {
             next(e)
