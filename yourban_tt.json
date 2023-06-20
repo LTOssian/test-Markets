@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "c4dd1630-d30e-44f2-89d8-0b0bbf0932eb",
+		"name": "test_yourban",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26434649"
+	},
+	"item": [
+		{
+			"name": "City Request",
+			"item": [
+				{
+					"name": "get market by city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4001/api/city/Putrajaya",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"city",
+								"Putrajaya"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get market by fields in city",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4001/api/market/city/France/field?f=Home",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"market",
+								"city",
+								"France",
+								"field"
+							],
+							"query": [
+								{
+									"key": "f",
+									"value": "Home"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Market Global Request",
+			"item": [
+				{
+					"name": "get by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4001/api/market/yourban",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"market",
+								"yourban"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create Market",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"etablissement_type\": \"Shoes\",\r\n    \"etablissement\": \"city\",\r\n    \"location\": \"France\",\r\n    \"address\": \"Montreuil\",\r\n    \"mail\": \"string@test.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4001/api/market/",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"market",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4001/api/market/10",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"market",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"etablissement_type\": \"Baby\",\r\n    \"etablissement\": \"Louisan Cirkus\",\r\n    \"location\": \"Montreuil\",\r\n    \"address\": \"387 Vahlen Point\",\r\n    \"mail\": \"kvaud0@slate.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4001/api/market/1000000",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"market",
+								"1000000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Field Request",
+			"item": [
+				{
+					"name": "get market by field",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4001/api/field/456",
+							"host": [
+								"localhost"
+							],
+							"port": "4001",
+							"path": [
+								"api",
+								"field",
+								"456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get all markets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:4001/api/market/all",
+					"host": [
+						"localhost"
+					],
+					"port": "4001",
+					"path": [
+						"api",
+						"market",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

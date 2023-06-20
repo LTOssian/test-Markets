@@ -4,7 +4,19 @@
 
 The goal of this project is to build a fullstack application using React with the component lib Chakra UI & Express for a CRUD API.
 
-## Journaling :
+## Installation :
+
+- clone the repo
+- cd ./server
+  - `npm install`
+  - `npm run dev` (will run on port 4001)
+- cd ./front
+  - `npm install`
+  - `npm run start` (will run on port 3000)
+
+*If you use Postman the* yourban_tt.json *file will import directly the endpoints to test, otherwise you can still read it as documentation* 
+
+## Journal :
 
 Day 1 :
 -
@@ -23,3 +35,17 @@ Day 2 :
   - Finished Exercise #2 endpoints in the city & field modules.
 - Decisions made
   - To use `Merge Parameter` in order to make the last endpoint of Exercise #2 and avoid repeating functionalities.
+
+Day 3 :
+-
+- Tasks done
+  - Read Chakra UI Document & Figma 
+  - Read Atomic Pattern Blog explanation
+  - Experiment ChakraUI on Mock folder
+
+Day 6:
+-
+- Tasks done
+  - Did all Front-End exercises
+
+
