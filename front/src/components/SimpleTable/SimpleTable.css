@@ -1,5 +1,5 @@
 .tableLayout {
-    width: 1100px;
+    min-width: 1100px;
 }
 
 .resultText {

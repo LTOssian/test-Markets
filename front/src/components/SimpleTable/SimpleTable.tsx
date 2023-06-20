@@ -34,7 +34,7 @@ function SimpleTable({ data }: SimpleTableProps) {
                             <Th>Type de commerce</Th>
                             <Th>Ville</Th>
                             <Th>Adresse</Th>
-                            {/* <Th>Mail</Th> */}
+                             <Th>Mail</Th>
                             <Th>Actions</Th>
                         </Tr>
                     </Thead>
