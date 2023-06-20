@@ -5,6 +5,7 @@
     justify-content: center;
 }
 
-.trashIcon {
+.trashIcon,
+.penIcon {
     width: 24px;
 }

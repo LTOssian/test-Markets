@@ -1,5 +1,5 @@
 import {Button} from "@chakra-ui/react";
-import trash from '../../assets/trash.svg';
+import trashIcon from '../../assets/trash.svg';
 import { useMutation } from "react-query";
 import {marketService} from "../../fetchers/market/market.service";
 import {queryClient} from "../../App";
@@ -12,11 +12,11 @@ interface DeleteButtonProps {
 function DeleteButton ({ rowId }: DeleteButtonProps) {
     const rowDeletion = useMutation(() => marketService.useDelete(rowId));
     return (
-        <Button colorScheme={"red"} size={"sm"} onClick={async () => {
+        <Button colorScheme={"red"} onClick={async () => {
             await rowDeletion.mutateAsync();
             await queryClient.invalidateQueries('markets');
         }}>
-            <img src={trash} alt={"TrashCan Icon"} className={"trashIcon"}/>
+            <img src={trashIcon} alt={"TrashCan Icon"} className={"trashIcon"}/>
         </Button>
     )
 }
