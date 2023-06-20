@@ -14,7 +14,7 @@ The goal of this project is to build a fullstack application using React with th
   - `npm install`
   - `npm run start` (will run on port 3000)
 
-*If you use Postman the* yourban_tt.json *file will import directly the endpoints to test, otherwise you can still read it as documentation* 
+*If you use Postman the* yourban_tt.json *file will import directly the endpoints to test, otherwise you can still read it as documentation along with the code* 
 
 ## Journal :
 
@@ -47,5 +47,8 @@ Day 6:
 -
 - Tasks done
   - Did all Front-End exercises
-
+- Decisions made
+  - use `axios` to interact with the API for more robust calls
+  - add a filter for market fields
+  - add a pagination component otherwise the 1000 rows would slow the page down
 
