@@ -21,10 +21,12 @@ function Home() {
     });
 
     return (
-        <div className={"homeLayout"}>
-            <SimpleFilter
-                refetch={refetch}
-            />
+        <div className={"Home"}>
+            <div className={"headerLayout"}>
+                <SimpleFilter
+                    refetch={refetch}
+                />
+            </div>
             <SimpleTable
                 data={data}
             />
