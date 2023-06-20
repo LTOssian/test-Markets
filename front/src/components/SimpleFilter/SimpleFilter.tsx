@@ -17,7 +17,7 @@ function SimpleFilter({refetch}: SimpleFitler) {
     return (
         <div className={"simpleFilter"}>
             <Select
-                placeholder='Filtrer par domaine'
+                placeholder='Type de commerce'
                 size='lg'
                 value={selectedValue}
                 onChange={ async (e) => {
@@ -36,6 +36,7 @@ function SimpleFilter({refetch}: SimpleFitler) {
             {
                 selectedValue ? (
                     <CloseButton
+                        className={"closeBtn"}
                         size='lg'
                         onClick={ async () => {
                             await setSelectedValue("");

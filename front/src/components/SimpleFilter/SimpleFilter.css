@@ -1,7 +1,11 @@
 .simpleFilter {
-    max-width: 500px;
     margin: 64px;
     display: flex;
     gap: 16px;
     align-items: center;
+}
+
+.closeBtn {
+    position: fixed;
+    right: calc(50% - 150px);
 }
