@@ -4,11 +4,15 @@ import {PlaceType} from "../../utils/place_type.enum";
 import {CloseButton, filter, Select} from '@chakra-ui/react'
 import {queryClient} from "../../App";
 import {useSelectFilter} from "../../contexts/FilterContext";
+import {QueryObserverResult, RefetchOptions, RefetchQueryFilters} from "react-query";
+import {MarketDto} from "../../fetchers/market.dto";
 
-function SimpleFilter() {
+interface SimpleFitler {
+    refetch: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<MarketDto, unknown>>
+}
+function SimpleFilter({refetch}: SimpleFitler) {
 
     const { selectedValue, setSelectedValue } = useSelectFilter();
-
 
     return (
         <div className={"simpleFilter"}>
@@ -16,10 +20,11 @@ function SimpleFilter() {
                 placeholder='Filtrer par domaine'
                 size='lg'
                 value={selectedValue}
-                onChange={async (e) => {
-                    setSelectedValue(e.target.value)
-                }}
-            >
+                onChange={ async (e) => {
+                    await setSelectedValue(e.target.value);
+                    await refetch()
+                }
+            }>
                 {
                     Object.values(PlaceType).map((type) => {
                         return (
@@ -30,10 +35,13 @@ function SimpleFilter() {
             </Select>
             {
                 selectedValue ? (
-                    <CloseButton size='lg' onClick={async () => {
-                        setSelectedValue("");
-                        await queryClient.invalidateQueries('markets');
-                    }}/>
+                    <CloseButton
+                        size='lg'
+                        onClick={ async () => {
+                            await setSelectedValue("");
+                            await refetch()
+                        }
+                    }/>
                 ) : null
             }
         </div>

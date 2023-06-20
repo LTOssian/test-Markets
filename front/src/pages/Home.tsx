@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import SimpleFilter from "../components/SimpleFilter/SimpleFilter";
 import './Home.css';
 import {useQuery} from "react-query";
@@ -6,13 +6,14 @@ import {marketService} from "../fetchers/market/market.service";
 import SimpleTable from "../components/SimpleTable/SimpleTable";
 import {useSelectFilter} from "../contexts/FilterContext";
 import {PaginationProvider} from "../contexts/PaginationContext";
+import {fieldService} from "../fetchers/field/field.service";
 function Home() {
-    const { selectedValue, setSelectedValue } = useSelectFilter(); // Access select filter context values and functions
+    const { selectedValue } = useSelectFilter();
 
-    const {data, isSuccess, isLoading, isError} = useQuery("markets", () => {
+    const {data, refetch, isLoading, isError} = useQuery("markets",
+        () => {
             if (selectedValue) {
-                console.log("markets within" + selectedValue)
-                return undefined
+                return fieldService.useField(selectedValue);
             } else {
                 return marketService.useMarkets();
             }
@@ -22,16 +23,15 @@ function Home() {
 
     return (
         <div className={"homeLayout"}>
-                <SimpleFilter/>
-            <div>
-
-            </div>
-            {selectedValue}
-        <PaginationProvider>
-            <SimpleTable
-                data={data}
+            <SimpleFilter
+                refetch={refetch}
             />
-        </PaginationProvider>
+            {/*{selectedValue}*/}
+            <PaginationProvider>
+                <SimpleTable
+                    data={data}
+                />
+            </PaginationProvider>
         </div>
     )
 }

@@ -40,7 +40,7 @@ function SimpleTable({ data }: SimpleTableProps) {
                     </Thead>
                     <Tbody className={"tableDarkText"}>
                         {
-                            data?.data.slice(currentPage-1,currentPage*10).map(market => (
+                            data?.data.slice(currentPage-1,currentPage*20).map(market => (
                                     <SimpleTableRow
                                         key={market.id}
                                         id={market.id}
