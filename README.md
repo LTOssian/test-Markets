@@ -1,8 +1,8 @@
-# YOUrban
+# Markets
 
 ## Goal
 
-The goal of this project is to build a fullstack application using React with the component lib Chakra UI & Express for a CRUD API.
+The goal of this project is to build a fullstack CRUD application using React with the component lib Chakra UI & Express for a Rest  API.
 
 ## Installation :
 
@@ -46,9 +46,15 @@ Day 3 :
 Day 6:
 -
 - Tasks done
-  - Did all Front-End exercises
+  - Finished all Front-End exercises
 - Decisions made
-  - use `axios` to interact with the API for more robust calls
-  - add a filter for market fields
-  - add a pagination component otherwise the 1000 rows would slow the page down
+  - To use `axios` to interact with the API for more robust calls
+  - To add a filter for market fields
+  - To add a pagination component otherwise the 1000 rows would slow the page down
+
+## Continued Development
+
+Had a hard time wrapping my head around ChakraUI at first, which is why I slowed down after Day 3. My approach on reading documentation wasn't so great, I must take into account the ecosystem around the specific thing that I want to use instead of making narrow sighted research.
+
+## Resources 
 
