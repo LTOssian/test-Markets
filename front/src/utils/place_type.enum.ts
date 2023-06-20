@@ -16,7 +16,7 @@ export enum PlaceType {
     automotive = "Automotive",
     outdoors = "Outdoors",
     movies = "Movies",
-    electronics = "electronics",
+    electronics = "Electronics",
     games = "Games",
     beauty = "Beauty",
     clothing = "Clothing",
