@@ -55,6 +55,3 @@ Day 6:
 ## Continued Development
 
 Had a hard time wrapping my head around ChakraUI at first, which is why I slowed down after Day 3. My approach on reading documentation wasn't so great, I must take into account the ecosystem around the specific thing that I want to use instead of making narrow sighted research.
-
-## Resources 
-
