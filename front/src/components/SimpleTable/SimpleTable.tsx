@@ -25,7 +25,7 @@ function SimpleTable({ data }: SimpleTableProps) {
         <div className={"simpleTable"}>
             <div className={"headerLayout"}>
                 <p className={"resultText"}>
-                    {rowQuantity == 1 ? rowQuantity + " result" : rowQuantity + " results"} <span>({pageQuantity == 1 ? pageQuantity + " page" : pageQuantity + " pages"})</span>
+                    {rowQuantity === 1 ? rowQuantity + " result" : rowQuantity + " results"} <span>({pageQuantity === 1 ? pageQuantity + " page" : pageQuantity + " pages"})</span>
                 </p>
                 <SimplePagination
                     maxPage={pageQuantity}
