@@ -1,4 +1,4 @@
-.homeLayout {
+.headerLayout {
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -8,4 +8,11 @@
 .trashIcon,
 .penIcon {
     width: 24px;
+}
+
+.simplePagination,
+.resultText,
+.simpleFilter
+{
+    margin: 16px 0;
 }
