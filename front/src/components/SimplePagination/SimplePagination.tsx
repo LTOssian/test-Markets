@@ -15,8 +15,9 @@ function SimplePagination ({maxPage}: SimplePaginationProps) {
 
     return (
         <div className={"simplePagination"}>
-            <NumberInput defaultValue={currentPage}
+            <NumberInput defaultValue={1}
                          size='sm'
+                         value={currentPage}
                          onChange={(value) => {
                              setCurrentPage(Number(value))
                          }}

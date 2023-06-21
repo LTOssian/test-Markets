@@ -5,6 +5,7 @@ import {CloseButton, Select} from '@chakra-ui/react'
 import {useSelectFilter} from "../../contexts/FilterContext";
 import {QueryObserverResult, RefetchOptions, RefetchQueryFilters} from "react-query";
 import {MarketDto} from "../../fetchers/market.dto";
+import {usePagination} from "../../contexts/PaginationContext";
 
 interface SimpleFitler {
     refetch: <TPageData>(options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined) => Promise<QueryObserverResult<MarketDto, unknown>>
@@ -12,7 +13,7 @@ interface SimpleFitler {
 function SimpleFilter({refetch}: SimpleFitler) {
 
     const { selectedValue, setSelectedValue } = useSelectFilter();
-
+    const { setCurrentPage} = usePagination();
     return (
         <div className={"simpleFilter"}>
             <Select
@@ -22,6 +23,7 @@ function SimpleFilter({refetch}: SimpleFitler) {
                 onChange={ async (e) => {
                     await setSelectedValue(e.target.value);
                     await refetch()
+                    setCurrentPage(1);
                 }
             }>
                 {
