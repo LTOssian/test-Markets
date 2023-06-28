@@ -56,10 +56,6 @@ Day 6:
   - To add a filter for the fields (with Context)
   - To add a pagination component & Context otherwise the 1000 rows would slow the page down
 
-## Continued Development
-
-Had a hard time wrapping my head around ChakraUI at first, which is why I slowed down after Day 3. My approach on reading documentation wasn't so great, I must take into account the ecosystem around the specific thing that I want to use instead of making narrow sighted research.
-
 ## Resources 
 
 - [Frank Grall's article about Atomic Design (FR)](https://medium.com/@frkgrall/architecturer-un-projet-react-avec-latomic-design-bce9a3e422d0)
