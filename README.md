@@ -43,7 +43,7 @@ Day 2 :
 Day 3 :
 -
 - Tasks done
-  - Read Chakra UI Document & Figma 
+  - Read Chakra UI Documentation & Figma 
   - Read Atomic Pattern Blog explanation
   - Experiment ChakraUI on Mock folder
 
